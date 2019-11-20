@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <!-- Custom fonts for this theme -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Theme CSS -->
+    <link href="css/freelancer.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body  >
+<div th:replace="index::navlink"></div>
+<form class=""  th:action="@{/form}" th:object="${message}" method="POST" enctype="multipart/form-data" style="width: 1000px;margin-left: 200px;margin-top: 100px">
+    <div class="form-group " >
+        <input type="hidden"   th:field="*{id}">
+        <input type="hidden" th:field="*{pic}">
+    </div>
+    <div class="form-group " >
+        <label for="exampleFormControlInput1">Title :</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Message title" th:field="*{title}">
+        <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea">Content :</label>
+        <textarea class="form-control" id="exampleFormControlTextarea" rows="3" th:field="*{content}"></textarea>
+        <span th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></span>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlSel">Posted Date :</label>
+        <input type="number" class="form-control" id="exampleFormControlSel" th:field="*{postedDate}">
+        <span th:if="${#fields.hasErrors('postedDate')}" th:errors="*{postedDate}"></span>
+    </div>
+    <div class="form-group">
+        <label for="example">Posted by :</label>
+        <input type="text" class="form-control" id="example"  th:field="*{postedBy}">
+        <span th:if="${#fields.hasErrors('postedBy')}" th:errors="*{postedBy}"></span>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlFile1">Add Image</label>
+        <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+<div th:replace="index::footer" style="margin-bottom: 1px"></div>
+</html>
